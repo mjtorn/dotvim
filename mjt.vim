@@ -91,43 +91,57 @@ endfunction
 imap <silent> <C-Y> <C-R><C-R>=LookDirection('up')<CR>
 imap <silent> <C-E> <C-R><C-R>=LookDirection('down')<CR>
 
-"" Start with faux values
-let g:mjt_sp_win = -1
-let g:mjt_sp_buf = -1
+"" Start with faux values, but remember on re-source
+if !exists("g:mjt_sp_buf")
+  let g:mjt_sp_win = -1
+  let g:mjt_sp_buf = -1
+  let g:mjt_sp_tab = -1
+endif
 
 function! CloseScratchpad()
-  echo "lol close"
-  if winbufnr("%") == g:mjt_sp_buf
+  if g:mjt_sp_win > 0
+    echo "lol close"
+    exec "tabnext" g:mjt_sp_tab
+    exec g:mjt_sp_win "wincmd w"
     :hide
+    exec "wincmd p"
+    " Return window
+    let g:mjt_sp_win = -1
+    let g:mjt_sp_tab = -1
   endif
 endfunction
 
 function! OpenScratchpad()
-  let save_eq = &equalalways
-  set noequalalways
-  " Open a new buffer if one does not exist
-  if g:mjt_sp_buf == -1
-    new
+  if g:mjt_sp_win == -1 && g:mjt_sp_tab == -1
+    let save_eq = &equalalways
+    set noequalalways
+    " Open a new buffer if one does not exist
+    if g:mjt_sp_buf == -1
+      :new
+      let g:mjt_sp_buf = winbufnr("%")
+    else
+      " Nevar forget how sucky evaluations in vimscript are
+      exec "sb" g:mjt_sp_buf
+    endif
+    let &equalalways = save_eq
+
+    " Nevar forget window
+    let g:mjt_sp_tab = tabpagenr()
     let g:mjt_sp_win = winnr()
-    let g:mjt_sp_buf = winbufnr("%")
-  else
-    " Nevar forget how sucky evaluations in vimscript are
-    exec "sb"g:mjt_sp_buf
+
+    " See about height
+    let lines = getline(0, 15)
+    let g:linecount = len(lines)
+
+    if g:linecount < 4
+      let g:linecount = 4
+    elseif g:linecount > 14
+      let g:linecount = 14
+    endif
+    exec "resize" (g:linecount + 1)
+
+    echo "lol open"g:mjt_sp_buf"->"g:mjt_sp_win
   endif
-  let &equalalways = save_eq
-
-  " See about height
-  let lines = getline(0, 15)
-  let g:linecount = len(lines)
-
-  if g:linecount < 4
-    let g:linecount = 4
-	elseif g:linecount > 14
-		let g:linecount = 14
-  endif
-  exec "resize"(g:linecount + 1)
-
-  echo "lol open"g:mjt_sp_buf
 endfunction
 
 function! ToggleScratchpad()
