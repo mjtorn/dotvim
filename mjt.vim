@@ -111,10 +111,22 @@ function! OpenScratchpad()
     let g:mjt_sp_win = winnr()
     let g:mjt_sp_buf = winbufnr("%")
   else
-		" Nevar forget how sucky evaluations in vimscript are
+    " Nevar forget how sucky evaluations in vimscript are
     exec "sb"g:mjt_sp_buf
   endif
   let &equalalways = save_eq
+
+  " See about height
+  let lines = getline(0, 15)
+  let g:linecount = len(lines)
+
+  if g:linecount < 4
+    let g:linecount = 4
+	elseif g:linecount > 14
+		let g:linecount = 14
+  endif
+  exec "resize"(g:linecount + 1)
+
   echo "lol open"g:mjt_sp_buf
 endfunction
 
