@@ -1,0 +1,89 @@
+--- N/NERD_tree.vim	2010-06-06 20:26:19.146374037 +0300
++++ plugin/NERD_tree.vim	2010-06-06 21:45:18.048370485 +0300
+@@ -10,7 +10,7 @@
+ "              See http://sam.zoy.org/wtfpl/COPYING for more details.
+ "
+ " ============================================================================
+-let s:NERD_tree_version = '4.1.0'
++let s:NERD_tree_version = '4.1.1-mjt'
+ 
+ " SECTION: Script init stuff {{{1
+ "============================================================
+@@ -172,6 +172,10 @@
+ 
+     "load all nerdtree plugins after vim starts
+     autocmd VimEnter * runtime! nerdtree_plugin/**/*.vim
++
++    if exists("g:NERDTreeSticky")
++        autocmd BufEnter * call s:moveNerdTree()
++    endif
+ augroup END
+ 
+ if g:NERDTreeHijackNetrw
+@@ -2599,6 +2603,22 @@
+ 
+     call s:renderView()
+     call b:NERDTreeRoot.putCursorHere(0, 0)
++
++    "make it known
++    if exists("g:NERDTreeSticky")
++        let g:NERDTreeTabNum = tabpagenr()
++    endif
++endfunction
++
++"FUNCTION: s:moveNerdTree
++function! s:moveNerdTree()
++    if exists("g:NERDTreeSticky") && exists("g:NERDTreeTabNum")
++        if tabpagenr() != g:NERDTreeTabNum
++            if !s:isTreeOpen()
++                call s:initNerdTreeMirror()
++            endif
++        endif
++    endif
+ endfunction
+ 
+ "FUNCTION: s:initNerdTreeInPlace(dir) {{{2
+@@ -2804,9 +2824,9 @@
+         endif
+     endif
+ endfunction
+-"FUNCTION: s:closeTree() {{{2
++"FUNCTION: s:helpCloseTree() {{{2
+ "Closes the primary NERD tree window for this tab
+-function! s:closeTree()
++function! s:helpCloseTree()
+     if !s:isTreeOpen()
+         throw "NERDTree.NoTreeFoundError: no NERDTree is open"
+     endif
+@@ -2819,6 +2839,31 @@
+         close
+     endif
+ endfunction
++"FUNCTION: s:closeTree() {{{2
++"Closes the primary NERD tree window for this tab or all tree windows
++function! s:closeTree()
++    if !exists("g:NERDTreeSticky")
++        call s:helpCloseTree()
++    endif
++
++    "close for other tabs too!
++    if !exists("g:NERDTreeCloseTab")
++        let g:NERDTreeCloseTab = tabpagenr()
++    endif
++    if exists("g:NERDTreeSticky")
++        for i in range(1, tabpagenr("$"))
++            exec "tabnext" i
++            " Not necessarily true, can have "unvisited" tabs
++            if s:isTreeOpen()
++                call s:helpCloseTree()
++            endif
++            if i == tabpagenr("$")
++                exec "tabnext"g:NERDTreeCloseTab
++                unlet g:NERDTreeCloseTab
++            endif
++        endfor
++    endif
++endfunction
+ 
+ "FUNCTION: s:closeTreeIfOpen() {{{2
+ "Closes the NERD tree window if it is open
