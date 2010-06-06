@@ -56,8 +56,8 @@ endfunction
 nmap <silent>  ;p :call WordCheck()<CR>
 
 "" Scripting in insert mode
-imap <silent> <C-D><C-D> <C-R>=strftime("%Y-%m-%d ")<CR>
-imap <silent> <C-T><C-T> <C-R>=strftime("%H:%M:%S ")<CR>
+"imap <silent> <C-D><C-D> <C-R>=strftime("%Y-%m-%d ")<CR>
+"imap <silent> <C-T><C-T> <C-R>=strftime("%H:%M:%S ")<CR>
 
 " K for kalkulation! Because C-C is used already
 imap <silent> <C-k> <C-R>=string(eval(input("Calculate: ")))<CR> 
@@ -100,11 +100,10 @@ endif
 
 function! CloseScratchpad()
   if g:mjt_sp_win > 0
-    echo "lol close"
     exec "tabnext" g:mjt_sp_tab
     exec g:mjt_sp_win "wincmd w"
     :hide
-    exec "wincmd p"
+
     " Return window
     let g:mjt_sp_win = -1
     let g:mjt_sp_tab = -1
@@ -112,6 +111,7 @@ function! CloseScratchpad()
 endfunction
 
 function! OpenScratchpad()
+  " Are we closed?
   if g:mjt_sp_win == -1 && g:mjt_sp_tab == -1
     let save_eq = &equalalways
     set noequalalways
@@ -139,13 +139,15 @@ function! OpenScratchpad()
       let g:linecount = 14
     endif
     exec "resize" (g:linecount + 1)
+  " Or are we in another tab?
+  elseif tabpagenr() != g:mjt_sp_tab
+    let g:mjt_sp_swap_tab = tabpagenr()
 
-"""" Sugh
-"    " Set hiding
-"    augroup spevents
-"    autocmd spevents BufHidden g:mjt_sp_buf echo "hidden" 
-
-    echo "lol open"g:mjt_sp_buf"->"g:mjt_sp_win
+    " Resets variables to -1
+    call CloseScratchpad()
+    exec "tabnext"g:mjt_sp_swap_tab
+    unlet g:mjt_sp_swap_tab
+    call OpenScratchpad()
   endif
 endfunction
 
@@ -153,7 +155,14 @@ function! ToggleScratchpad()
   let g:mjt_scratchpad = exists("g:mjt_scratchpad") ? !g:mjt_scratchpad : 1
 
   if g:mjt_scratchpad
-    call CloseScratchpad()
+    " Close where we are
+    if tabpagenr() == g:mjt_sp_tab
+      call CloseScratchpad()
+		" Or re-open here
+    else
+			let g:mjt_scratchpad = 1
+			call OpenScratchpad()
+    endif
   else
     call OpenScratchpad()
   endif
