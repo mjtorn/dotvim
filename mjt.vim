@@ -140,6 +140,11 @@ function! OpenScratchpad()
     endif
     exec "resize" (g:linecount + 1)
 
+"""" Sugh
+"    " Set hiding
+"    augroup spevents
+"    autocmd spevents BufHidden g:mjt_sp_buf echo "hidden" 
+
     echo "lol open"g:mjt_sp_buf"->"g:mjt_sp_win
   endif
 endfunction
