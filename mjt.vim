@@ -152,10 +152,10 @@ function! ToggleScratchpad()
   endif
 endfunction
 
-function! MoveScratchPad()
+function! MoveScratchpad()
   if exists("g:mjt_scratchpad") && g:mjt_scratchpad == 1
-    if winbufnr("%") != g:mjt_sp_buf
-      if tabpagenr() != g:mjt_sp_tab
+    if winbufnr("%") != g:mjt_sp_buf && g:mjt_sp_buf != -1
+      if tabpagenr() != g:mjt_sp_tab && g:mjt_sp_buf != -1
         let g:mjt_sp_swap_tab = tabpagenr()
 
         " Resets variables to -1
@@ -168,7 +168,17 @@ function! MoveScratchPad()
   endif
 endfunction
 
-autocmd BufEnter * call MoveScratchPad()
+function! SetScratchpadWindow()
+  if exists("g:mjt_scratchpad") && g:mjt_scratchpad == 1
+    " Works because BufLeave is triggered before leaving
+    if winbufnr("%") == g:mjt_sp_buf
+      let g:mjt_sp_win = winnr()
+    endif
+  endif
+endfunction
+
+autocmd BufEnter * call MoveScratchpad()
+autocmd BufLeave * call SetScratchpadWindow()
 nmap \s :call ToggleScratchpad()<CR>
 
 " EOF
