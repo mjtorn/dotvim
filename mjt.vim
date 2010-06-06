@@ -139,35 +139,36 @@ function! OpenScratchpad()
       let g:linecount = 14
     endif
     exec "resize" (g:linecount + 1)
-  " Or are we in another tab?
-  elseif tabpagenr() != g:mjt_sp_tab
-    let g:mjt_sp_swap_tab = tabpagenr()
-
-    " Resets variables to -1
-    call CloseScratchpad()
-    exec "tabnext"g:mjt_sp_swap_tab
-    unlet g:mjt_sp_swap_tab
-    call OpenScratchpad()
   endif
 endfunction
 
 function! ToggleScratchpad()
   let g:mjt_scratchpad = exists("g:mjt_scratchpad") ? !g:mjt_scratchpad : 1
 
-  if g:mjt_scratchpad
-    " Close where we are
-    if tabpagenr() == g:mjt_sp_tab
-      call CloseScratchpad()
-		" Or re-open here
-    else
-			let g:mjt_scratchpad = 1
-			call OpenScratchpad()
-    endif
+  if g:mjt_scratchpad == 0
+    call CloseScratchpad()
   else
     call OpenScratchpad()
   endif
 endfunction
 
+function! MoveScratchPad()
+  if exists("g:mjt_scratchpad") && g:mjt_scratchpad == 1
+    if winbufnr("%") != g:mjt_sp_buf
+      if tabpagenr() != g:mjt_sp_tab
+        let g:mjt_sp_swap_tab = tabpagenr()
+
+        " Resets variables to -1
+        call CloseScratchpad()
+        exec "tabnext"g:mjt_sp_swap_tab
+        unlet g:mjt_sp_swap_tab
+        call OpenScratchpad()
+      endif
+    endif
+  endif
+endfunction
+
+autocmd BufEnter * call MoveScratchPad()
 nmap \s :call ToggleScratchpad()<CR>
 
 " EOF
