@@ -64,7 +64,7 @@ imap <silent> <C-k> <C-R>=string(eval(input("Calculate: ")))<CR>
 
 "" Listing 11 (modified)
 " Extend insert-mode C-e and C-y behavior
-
+" And do not use them because they suck
 function! LookDirection(direction)
   " Which column are we on?
   let column_num = virtcol('.')
@@ -88,98 +88,120 @@ function! LookDirection(direction)
     return matchstr(getline(target_line_num), target_pattern)
 endfunction
 
-imap <silent> <C-Y> <C-R><C-R>=LookDirection('up')<CR>
-imap <silent> <C-E> <C-R><C-R>=LookDirection('down')<CR>
+"imap <silent> <C-Y> <C-R><C-R>=LookDirection('up')<CR>
+"imap <silent> <C-E> <C-R><C-R>=LookDirection('down')<CR>
 
-"" Start with faux values, but remember on re-source
-if !exists("g:mjt_sp_buf")
-  let g:mjt_sp_win = -1
-  let g:mjt_sp_buf = -1
-  let g:mjt_sp_tab = -1
-endif
-
-function! CloseScratchpad()
-  if g:mjt_sp_win > 0
-    exec "tabnext" g:mjt_sp_tab
-    exec g:mjt_sp_win "wincmd w"
-    :hide
-
-    " Return window
-    let g:mjt_sp_win = -1
-    let g:mjt_sp_tab = -1
-  endif
-endfunction
-
-function! OpenScratchpad()
-  " Are we closed?
-  if g:mjt_sp_win == -1 && g:mjt_sp_tab == -1
-    let save_eq = &equalalways
-    set noequalalways
-    " Open a new buffer if one does not exist
-    if g:mjt_sp_buf == -1
-      :new
-      let g:mjt_sp_buf = winbufnr("%")
-    else
-      " Nevar forget how sucky evaluations in vimscript are
-      exec "sb" g:mjt_sp_buf
-    endif
-    let &equalalways = save_eq
-
-    " Nevar forget window
-    let g:mjt_sp_tab = tabpagenr()
-    let g:mjt_sp_win = winnr()
-
-    " See about height
-    let lines = getline(0, 15)
-    let g:linecount = len(lines)
-
-    if g:linecount < 4
-      let g:linecount = 4
-    elseif g:linecount > 14
-      let g:linecount = 14
-    endif
-    exec "resize" (g:linecount + 1)
-  endif
-endfunction
-
-function! ToggleScratchpad()
-  let g:mjt_scratchpad = exists("g:mjt_scratchpad") ? !g:mjt_scratchpad : 1
-
-  if g:mjt_scratchpad == 0
-    call CloseScratchpad()
+function! TogglePaste()
+  if exists("g:pasting") && g:pasting == 1
+    :set nopaste
+    let g:pasting = 0
+    echo "nopaste"
   else
-    call OpenScratchpad()
+    :set paste
+    let g:pasting = 1
+    echo "paste"
   endif
 endfunction
 
-function! MoveScratchpad()
-  if exists("g:mjt_scratchpad") && g:mjt_scratchpad == 1
-    if winbufnr("%") != g:mjt_sp_buf && g:mjt_sp_buf != -1
-      if tabpagenr() != g:mjt_sp_tab && g:mjt_sp_buf != -1
-        let g:mjt_sp_swap_tab = tabpagenr()
+nmap \p :call TogglePaste()<Enter>
 
-        " Resets variables to -1
-        call CloseScratchpad()
-        exec "tabnext"g:mjt_sp_swap_tab
-        unlet g:mjt_sp_swap_tab
-        call OpenScratchpad()
+"" Because abbreviations suck
+function! HandlePythonParens()
+  for keyword in ['def', 'class']
+    echom keyword
+    if (match(getline(line('.')), keyword) % 4) == 0
+      return "():\<Left>\<Left>"
+    endif
+  endfor
+  return "()\<Left>"
+endfunction
+
+function! HandlePythonSingleQuote()
+  "" Are we in a dictionary?
+  let l:lines = getline(0, '$')
+  let l:line_count = len(lines)
+
+  let l:found_open = 0
+  let l:found_close = 0
+
+  "" FIXME Make sure we don't find ourselves in midst of data and context!
+  let l:i = line('.')
+  while l:found_open == 0
+    let l:line = getline(i)
+    " Do not match this one's opener
+    if match(l:line, '}') > -1
+      break
+    endif
+    if match(l:line, '{') > -1
+      let l:found_open = 1
+      break
+    endif
+    let l:i -= 1
+    if l:i == 0
+      break
+    endif
+  endwhile
+
+  let l:i = line('.')
+  while l:found_close == 0
+    let l:line = getline(l:i)
+    " Do not find this one's closer
+    if match(l:line, '{') > -1
+      break
+    endif
+    if match(l:line, '}') > -1
+      let l:found_close = 1
+      break
+    endif
+    let l:i += 1
+    if l:i == line_count
+      break
+    endif
+  endwhile
+
+  let found_colon = match(getline(line('.')), ':') > -1
+
+  "" FIXME: make sure we don't have comma yet
+  if (l:found_open && l:found_close) && !found_colon
+    return "'': \<Left>\<Left>\<Left>"
+  elseif (l:found_open && l:found_close)
+      if match(getline(line('.')), ',') > -1
+        return "''\<Left>"
       endif
-    endif
+      return "'',\<Left>\<Left>"
   endif
+
+  return "''\<Left>"
+
 endfunction
 
-function! SetScratchpadWindow()
-  if exists("g:mjt_scratchpad") && g:mjt_scratchpad == 1
-    " Works because BufLeave is triggered before leaving
-    if winbufnr("%") == g:mjt_sp_buf
-      let g:mjt_sp_win = winnr()
-    endif
+
+function! HandleJavascriptParens()
+  if match(getline(line('.')), 'function') > -1
+    return "() {\<CR>}\<CR>\<Esc>\<Up>i\<CR>\<Up>\<Tab>\<Esc>\<Up>$\<Left>\<Left>i"
   endif
+
+  for kword in ['for', 'if', 'while']
+    if match(getline(line('.')), kword) > -1
+      return "()\<Left>"
+    endif
+  endfor
+
+  if match(getline(line('.')), ';') > -1
+    return "()\<Left>"
+  endif
+  return "();\<Left>\<Left>"
 endfunction
 
-autocmd BufEnter * call MoveScratchpad()
-autocmd BufLeave * call SetScratchpadWindow()
-nmap \s :call ToggleScratchpad()<CR>
+function! HandleJavascriptBracket()
+  if match(getline(line('.')), ';') > -1
+    return "[]\<Left>"
+  endif
+  return "[];\<Left>\<Left>"
+endfunction
+
+:source ~/.vim/mjttab.vim
+:source ~/.vim/mjtabbrev.vim
 
 " EOF
 
