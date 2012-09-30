@@ -29,16 +29,6 @@ autocmd BufEnter *ml set tabstop=4 expandtab autoindent shiftwidth=4 fileencodin
 """ And vim
 autocmd BufEnter *vim set tabstop=2 expandtab autoindent shiftwidth=2 fileencoding=utf-8
 
-" Should enable pydiction
-filetype plugin on
-let g:pydiction_location = '/home/mjt/.vim/lib/pydiction/complete-dict'
-
-let g:pydiction_menu_height = 20
-
-"" no
-" Ropevim too
-"let ropevim_vim_completion=1
-
 " http://blog.fluther.com/django-vim/
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
