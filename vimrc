@@ -62,67 +62,10 @@ function! FindAndEdit(name)
 endfunction
 command! -nargs=1 FindAndEdit :call FindAndEdit("<args>")
 
-"" Try to recover complete state
-"" Leave open files whose contents did not match swap file
-function! Recover()
-  """ Set autocommand to be non-interactive! (E)dit anyway
-  autocmd SwapExists * let v:swapchoice="e"
-  """ Having more logic here would be helpful but it just won't work ARGH!
-  "autocmd SwapExists * let v:swapchoice="e" | let swapname=v:swapname
-
-  let raw_list=system("find . -name *sw?")
-  let file_list=substitute(raw_list, "\.sw.", "", "g")
-  let file_list=substitute(file_list, "\/\\.", "\/", "g")
-  " Kludge around the fact vim sucks and we can't:
-  " 1. set the swap file name into a variable
-  " 2. use the variable to delete swap file
-  let split_raw_list=split(raw_list, "\n")
-  echo split_raw_list
-
-  " Do a compare to see if this is a changed file or not
-  let idx=0
-  for file_name in split(file_list, "\n")
-    " Get swap name through kludge
-    let swapname=split_raw_list[idx]
-
-    "" XXX: WHY THE FUCK IS THERE AT LEAST ONE EMPTY ERROR?! SOMETIMES MORE!!!
-    " Error detected while processing function Recover:
-    "line   28:
-    "line   30:
-    "line   32:
-
-    " Recovered file
-    execute ":recover " . file_name
-    execute ":w " . file_name . ".recover"
-    execute ":e " . file_name . ".recover"
-    " Original file
-    execute ":new " . file_name
-
-    " Real work
-    let difflen=strlen(system("diff -u " . file_name . " " . file_name . ".recover"))
-    if difflen == 0
-      execute "!rm " . swapname
-
-      execute ":bnext"
-      " XXX: Why the fuck do we have to issue two quits?
-      execute ":q!"
-      execute ":q!"
-
-      execute "!rm " . file_name . ".recover"
-
-      " XXX: Why the fuck do we lose colors here?
-      execute ":syn on"
-    endif
-
-    let idx += 1
-
-    " Open a new tab for next iteration
-    execute ":tabnew"
-  endfor
-  " And close the last empty one
-  execute ":tabclose"
-endfunction
-command! -nargs=0 Recover :call Recover()
+"" Because I used to have a recovery function that did not work and I learned
+"" to save my files instead
+set nobackup
+set noswapfile
 
 """ Fix python
 autocmd BufEnter *.py set tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
