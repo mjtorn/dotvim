@@ -27,6 +27,12 @@ set undoreload=10000
 
 :source ~/.vim/mjt.vim
 
+" Window navigation to be a bit easier
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 "" Play around with ack-grep
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
 nnoremap <Leader>A :Ack 
