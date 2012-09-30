@@ -15,6 +15,10 @@ let mapleader=","
 "" Split a line
 nnoremap <Leader>s i<Enter><Esc>
 
+"" Look at the undo tree
+nnoremap <Leader>u :GundoToggle<CR>
+let g:gundo_right = 1
+
 :source ~/.vim/mjt.vim
 
 "" Play around with ack-grep
