@@ -24,24 +24,3 @@ imap <C-Y> <ESC><C-Y>i
 "" Would appreciate Control-Enter behaving as without insert mode
 "imap <C-CR> <ESC><CR>i
 
-"" http://vim.wikia.com/wiki/Automatically_append_closing_characters
-
-"" Have certain overrides
-autocmd BufEnter * inoremap "  ""<Left>
-autocmd BufEnter * inoremap '  ''<Left>
-autocmd BufEnter * inoremap (  ()<Left>
-autocmd BufEnter * inoremap [  []<Left>
-
-""" AARGH
-autocmd BufEnter * inoremap {  {<CR>}<Esc>O<Tab>
-
-autocmd BufEnter *py inoremap <silent> ( <C-R>=HandlePythonParens()<CR>
-autocmd BufEnter *py inoremap ' <C-R>=HandlePythonSingleQuote()<CR>
-
-autocmd BufEnter *js inoremap ( <C-R>=HandleJavascriptParens()<CR>
-autocmd BufEnter *js inoremap [ <C-R>=HandleJavascriptBracket()<CR>
-
-autocmd BufEnter *ml inoremap { {
-autocmd BufEnter *vim inoremap " "
-
-
