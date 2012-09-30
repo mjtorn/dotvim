@@ -28,40 +28,8 @@ let mapleader=","
 "" But I probably can't use DiffOrig
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
-"" http://vim.wikia.com/wiki/VimTip1234
-"" With renamed function name
-" Find file in current directory and edit it.
-function! FindAndEdit(name)
-  let l:list=system("find . -name '".a:name."' | perl -ne 'print \"$.\\t$_\"'")
-  let l:num=strlen(substitute(l:list, "[^\n]", "", "g"))
-  if l:num < 1
-    echo "'".a:name."' not found"
-    return
-  endif
-  if l:num != 1
-    echo l:list
-    let l:input=input("Which ? (CR=nothing)\n")
-    if strlen(l:input)==0
-      return
-    endif
-    if strlen(substitute(l:input, "[0-9]", "", "g"))>0
-      echo "Not a number"
-      return
-    endif
-    if l:input<1 || l:input>l:num
-      echo "Out of range"
-      return
-    endif
-    let l:line=matchstr("\n".l:list, "\n".l:input."\t[^\n]*")
-  else
-    let l:line=l:list
-  endif
-  let l:line=substitute(l:line, "^[^\t]*\t./", "", "")
-  " 2009-07-14: mjt: new tab
-  execute ":tabnew"
-  execute ":e ".l:line
-endfunction
-command! -nargs=1 FindAndEdit :call FindAndEdit("<args>")
+"" Play around with ack-grep
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
 
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
