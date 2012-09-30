@@ -29,6 +29,8 @@ set undoreload=10000
 
 "" Play around with ack-grep
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
+nnoremap <Leader>A :Ack 
+nnoremap <Leader>a :Ack 
 
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
