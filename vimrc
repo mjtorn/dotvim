@@ -13,7 +13,7 @@ set expandtab
 set tabstop=2
 set ruler
 
-autocmd BufRead /tmp/mutt* :source ~/.vim/mail.vim
+autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
 
 " So vim-git works etc
 let mapleader=","
@@ -31,7 +31,7 @@ set undolevels=1000
 " How many lines
 set undoreload=10000
 
-:source ~/.vim/mjt.vim
+:source ~/.vim/config/mjt.vim
 
 " Window navigation to be a bit easier
 nnoremap <C-h> <C-w>h
