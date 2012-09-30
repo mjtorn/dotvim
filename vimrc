@@ -16,7 +16,6 @@ let mapleader=","
 :map <LEADER>testsk gg:r ~/.vim/lib/test_skel.py<ENTER>ggdd21j
 
 :source ~/.vim/mjt.vim
-:source ~/.vim/plugin/minibufexpl.vim
 
 "" Fairly good shit
 "" http://code-and-hacks.blogspot.com/2009/05/recovering-after-vim-terminates.html
