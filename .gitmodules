@@ -34,6 +34,3 @@
 [submodule "bundle/delimitmate"]
 	path = bundle/delimitmate
 	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/rbowparens"]
-	path = bundle/rbowparens
-	url = git://github.com/kien/rainbow_parentheses.vim.git
