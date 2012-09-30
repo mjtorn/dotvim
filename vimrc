@@ -9,6 +9,12 @@ let g:nerdtree_tabs_focus_on_files = 1
 syn on
 colors evening
 
+set expandtab
+set tabstop=2
+set ruler
+
+autocmd BufRead /tmp/mutt* :source ~/.vim/mail.vim
+
 " So vim-git works etc
 let mapleader=","
 
