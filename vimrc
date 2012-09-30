@@ -23,11 +23,6 @@ let mapleader=","
 
 :source ~/.vim/mjt.vim
 
-"" Fairly good shit
-"" http://code-and-hacks.blogspot.com/2009/05/recovering-after-vim-terminates.html
-"" But I probably can't use DiffOrig
-command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
 "" Play around with ack-grep
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
 
