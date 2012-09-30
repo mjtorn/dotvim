@@ -7,3 +7,6 @@
 [submodule "bundle/nerdtree-tabs"]
 	path = bundle/nerdtree-tabs
 	url = git://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "bundle/gitvim"]
+	path = bundle/gitvim
+	url = git://github.com/motemen/git-vim.git
