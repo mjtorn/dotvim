@@ -1,5 +1,6 @@
 " vim: tabstop=2 expandtab autoindent shiftwidth=2 fileencoding=utf-8
 
+runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 let g:nerdtree_tabs_open_on_console_startup = 1
