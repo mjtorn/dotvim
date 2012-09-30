@@ -105,8 +105,8 @@ endfunction
 
 nmap \p :call TogglePaste()<Enter>
 
-:source ~/.vim/mjttab.vim
-:source ~/.vim/mjtabbrev.vim
+:source ~/.vim/config/mjttab.vim
+:source ~/.vim/config/mjtabbrev.vim
 
 " EOF
 
