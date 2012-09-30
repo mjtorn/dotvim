@@ -136,10 +136,6 @@ let g:pydiction_menu_height = 20
 " Ropevim too
 "let ropevim_vim_completion=1
 
-" Because I use sticky NERDTree
-let g:NERDTreeSticky = 1
-
-
 " http://blog.fluther.com/django-vim/
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -150,7 +146,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 nnoremap <Leader>s i<Enter><Esc>
 
 nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
-nmap ;N :source ~/.vim/plugin/NERD_tree.vim<Enter>
 nmap ;M :source ~/.vim/mjt.vim<Enter>
 
 
