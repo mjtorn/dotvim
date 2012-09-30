@@ -12,6 +12,9 @@ colors evening
 " So vim-git works etc
 let mapleader=","
 
+"" Split a line
+nnoremap <Leader>s i<Enter><Esc>
+
 :source ~/.vim/mjt.vim
 
 "" Play around with ack-grep
@@ -22,11 +25,9 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
 set nobackup
 set noswapfile
 
-""" Fix python
+"" Fix some file presets
 autocmd BufEnter *.py set tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
-""" And fbml/html
 autocmd BufEnter *ml set tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
-""" And vim
 autocmd BufEnter *vim set tabstop=2 expandtab autoindent shiftwidth=2 fileencoding=utf-8
 
 " http://blog.fluther.com/django-vim/
@@ -35,8 +36,6 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType fbml set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-nnoremap <Leader>s i<Enter><Esc>
 
 nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
 nmap ;M :source ~/.vim/mjt.vim<Enter>
