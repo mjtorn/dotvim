@@ -12,15 +12,6 @@ colors evening
 " So vim-git works etc
 let mapleader=","
 
-" python skeleton
-:map <LEADER>pysk i# vim: tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8<ENTER><ENTER><ENTER><ENTER># EOF<ENTER><ESC>kkk
-
-" html skeleton
-:map <LEADER>htsk gg:r ~/.vim/lib/html_skel.html<ENTER>ggdd5j
-
-" test skeleton
-:map <LEADER>testsk gg:r ~/.vim/lib/test_skel.py<ENTER>ggdd21j
-
 :source ~/.vim/mjt.vim
 
 "" Play around with ack-grep
