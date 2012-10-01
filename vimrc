@@ -3,7 +3,6 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_focus_on_files = 1
 
 syn on
@@ -64,4 +63,5 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
 nmap ;M :source ~/.vim/mjt.vim<Enter>
 
+nmap <Leader>n :NERDTreeTabsToggle<CR>
 
