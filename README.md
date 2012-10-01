@@ -8,7 +8,9 @@ Installation
 
     git clone git@github.com:mjtorn/dotvim.git .vim/
 
-    cd .vim
+    ln -s .vim/vimrc .vimrc
+
+    cd .vim/
 
     git submodule update --init
 
