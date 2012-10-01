@@ -6,17 +6,17 @@ mjt's .vim stuff
 Installation
 ------------
 
-        git clone git@github.com:mjtorn/dotvim.git .vim/
+    git clone git@github.com:mjtorn/dotvim.git .vim/
 
-        cd .vim
+    cd .vim
 
-        git submodule update --init
+    git submodule update --init
 
-        mkdir undo
+    mkdir undo
 
-        cd bundle/commandt/ruby/command-t
-        ruby extconf.rb
-        make
+    cd bundle/commandt/ruby/command-t
+    ruby extconf.rb
+    make
 
 
 
