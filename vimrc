@@ -13,6 +13,8 @@ set expandtab
 set tabstop=2
 set ruler
 
+set noautochdir
+
 autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
 
 " So vim-git works etc
