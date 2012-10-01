@@ -5,28 +5,36 @@ BUNDLE_DIR="bundle"
 
 set -e
 
+need_chdir=0
+if [ $PWD != ${HOME}/.vim/ ]; then
+  need_chdir=1
+  cd ${HOME}/.vim/
+fi
+
 which git > /dev/null || {
-	echo "Git must be installed"
-	exit 1
+  echo "Git must be installed"
+  exit 1
 }
 
 if [ $# -lt 3 ]; then
-	echo "USAGE: $0 github localname -m \"Commit message\""
-	echo "All arguments after localname are passed to git commit"
-	exit 1
+  echo "USAGE: $0 github localname -m \"Commit message\""
+  echo "All arguments after localname are passed to git commit"
+  exit 1
 fi
 
 test -d $BUNDLE_DIR || mkdir $BUNDLE_DIR
 
 function git_submodule {
-	git submodule add $1 ${BUNDLE_DIR}/$2
+  git submodule add $1 ${BUNDLE_DIR}/$2
 }
 
 function git_commit {
-	git add .
-	git commit "$@"
+  git add .
+  git commit "$@"
 }
 
 git_submodule $1 $2
 git_commit "${@:3}"
+
+test $need_chdir && cd $OLDPWD
 
