@@ -3,6 +3,9 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+" Needed for coffeescript
+filetype plugin indent on
+
 let g:nerdtree_tabs_focus_on_files = 1
 let g:NERDTreeWinSize = 30
 
