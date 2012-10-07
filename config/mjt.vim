@@ -125,8 +125,30 @@ endfunction
 
 nmap \w :echo WordCount()<Enter>
 
+"" http://got-ravings.blogspot.fi/2008/08/vim-pr0n-making-statuslines-that-own.html
+" slightly modified
+function! FileSize()
+  let bytes = getfsize(expand("%:p"))
+  if bytes <= 0
+       return 0
+  endif
+  if bytes < 1024
+    return bytes
+  else
+    let rem = bytes % 1024
+    if rem == 0
+      return (bytes / 1024) . "K"
+    else
+      return (bytes / 1024) . "K+" . rem
+    endif
+  endif
+endfunction
+
+nmap \S :echo FileSize()<Enter>
+
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
+:source ~/.vim/config/statusline.vim
 
 " EOF
 
