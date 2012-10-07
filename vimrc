@@ -67,7 +67,7 @@ autocmd FileType fbml set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
-nmap ;M :source ~/.vim/mjt.vim<Enter>
+nmap ;M :source ~/.vim/config/mjt.vim<Enter>
 
 nmap <Leader>n :NERDTreeTabsToggle<CR>
 
