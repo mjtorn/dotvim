@@ -105,10 +105,11 @@ endfunction
 
 nmap \p :call TogglePaste()<Enter>
 
-"" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim/11993678#11993678
+"" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim/
 " Modified to work with empty buffers
 function! WordCount()
   if &modified || !exists("b:wordcount")
+    let l:old_position = getpos('.')
     let l:old_status = v:statusmsg
     execute "silent normal g\<c-g>"
     if v:statusmsg == "--No lines in buffer--"
@@ -117,6 +118,7 @@ function! WordCount()
       let b:wordcount = str2nr(split(v:statusmsg)[11])
       let v:statusmsg = l:old_status
     endif
+    call setpos('.', l:old_position)
     return b:wordcount
   else
     return b:wordcount
