@@ -18,6 +18,8 @@ set ruler
 
 set noautochdir
 
+:source ~/.vim/config/mjt.vim
+
 autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
 
 " So vim-git works etc
@@ -35,8 +37,6 @@ set undodir=$HOME/.vim/undo
 set undolevels=1000
 " How many lines
 set undoreload=10000
-
-:source ~/.vim/config/mjt.vim
 
 " Window navigation to be a bit easier
 nnoremap <C-h> <C-w>h
