@@ -40,3 +40,6 @@
 [submodule "bundle/coffeescript"]
 	path = bundle/coffeescript
 	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/python_fn"]
+	path = bundle/python_fn
+	url = https://github.com/jsatt/python_fn.git
