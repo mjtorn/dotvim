@@ -18,6 +18,9 @@ set ruler
 
 set noautochdir
 
+set lazyredraw
+set laststatus=2
+
 :source ~/.vim/config/mjt.vim
 
 autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
