@@ -16,9 +16,3 @@ Installation
 
     mkdir undo
 
-    cd bundle/commandt/ruby/command-t
-    ruby extconf.rb
-    make
-
-
-
