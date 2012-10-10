@@ -49,6 +49,10 @@ nnoremap <Leader>a :Ack
 " Compatibility, sort of, with command-t
 map <Leader>t <C-p>
 
+let g:ctrlp_custom_ignore = {
+\  'file': '\v\.(pyc)$',
+\ }
+
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
 set nobackup
