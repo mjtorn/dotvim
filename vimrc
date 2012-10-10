@@ -46,6 +46,9 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
 nnoremap <Leader>A :Ack 
 nnoremap <Leader>a :Ack 
 
+" Compatibility, sort of, with command-t
+map <Leader>t <C-p>
+
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
 set nobackup
