@@ -43,3 +43,6 @@
 [submodule "bundle/python_fn"]
 	path = bundle/python_fn
 	url = https://github.com/jsatt/python_fn.git
+[submodule "bundle/insertlessly"]
+	path = bundle/insertlessly
+	url = git://github.com/dahu/Insertlessly.git
