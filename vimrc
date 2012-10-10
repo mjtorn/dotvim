@@ -25,9 +25,6 @@ autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
 " So vim-git works etc
 let mapleader=","
 
-"" Split a line
-nnoremap <Leader>s i<Enter><Esc>
-
 "" Look at the undo tree
 nnoremap <Leader>u :GundoToggle<CR>
 let g:gundo_right = 1
