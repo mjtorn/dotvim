@@ -28,9 +28,6 @@ autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
 " So vim-git works etc
 let mapleader=","
 
-"" Split a line
-nnoremap <Leader>s i<Enter><Esc>
-
 "" Look at the undo tree
 nnoremap <Leader>u :GundoToggle<CR>
 let g:gundo_right = 1
@@ -51,6 +48,13 @@ nnoremap <C-l> <C-w>l
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
 nnoremap <Leader>A :Ack 
 nnoremap <Leader>a :Ack 
+
+" Compatibility, sort of, with command-t
+map <Leader>t <C-p>
+
+let g:ctrlp_custom_ignore = {
+\  'file': '\v\.(pyc)$',
+\ }
 
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
