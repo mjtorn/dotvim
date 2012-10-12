@@ -1,5 +1,5 @@
-:set statusline=\ 
-:set statusline+=%t\                                        " filename tail
+:set statusline=
+:set statusline+=\ %f\                                      " relative filename
 :set statusline+=(%{WordCount()})\                          " word count
 :set statusline+=%m\                                        " modified flag
 :set statusline+=%r\                                        " readonly flag
@@ -9,4 +9,4 @@
 :set statusline+=%c,%l/%L\                                  " location in file
 :set statusline+=%P\                                        " percent through file
 :set statusline+=(%{FileSize()})\                           " file size
- 
+
