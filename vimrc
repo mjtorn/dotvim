@@ -74,6 +74,9 @@ autocmd BufEnter *ml setl tabstop=4 expandtab autoindent shiftwidth=4 fileencodi
 autocmd BufEnter *vim setl tabstop=2 expandtab autoindent shiftwidth=2 fileencoding=utf-8
 autocmd BufEnter *.coffee setl tabstop=2 expandtab autoindent shiftwidth=2 fileencoding=utf-8
 
+"" And not have folds closed by default!
+set foldlevelstart=10
+
 " http://blog.fluther.com/django-vim/
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
