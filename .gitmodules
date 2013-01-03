@@ -49,3 +49,6 @@
 [submodule "bundle/conqueshell"]
 	path = bundle/conqueshell
 	url = git://github.com/lrvick/Conque-Shell.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround
