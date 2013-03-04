@@ -103,7 +103,7 @@ function! TogglePaste()
   endif
 endfunction
 
-nmap \p :call TogglePaste()<Enter>
+nmap <Leader>p :call TogglePaste()<Enter>
 
 "" http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim/
 " Modified to work with empty buffers
