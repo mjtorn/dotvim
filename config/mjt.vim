@@ -12,7 +12,7 @@ function! ToggleSyntax()
   endif
 endfunction
 
-nmap ;s :call ToggleSyntax()<Enter>
+nmap <Leader>s :call ToggleSyntax()<Enter>
 
 function! CapitalizeCenterAndMoveDown()
   s/\<./\u&/g
