@@ -28,6 +28,9 @@ nmap <C-Y> <C-Y>k
 imap <C-E> <ESC><C-E>i
 imap <C-Y> <ESC><C-Y>i
 
+"" Folding space like the spice
+map <Space> za
+
 "" Would appreciate Control-Enter behaving as without insert mode
 "imap <C-CR> <ESC><CR>i
 

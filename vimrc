@@ -42,12 +42,9 @@ let g:ctrlp_custom_ignore = {
 \  'file': '\v\.(pyc)$',
 \ }
 
-" Make insertlessly do less. I like space/backspace as a stress toy
+" Make insertlessly do less. Frees the space key for folding
 let g:insertlessly_insert_spaces = 0
 let g:insertlessly_backspace_past_bol = 0
-
-" Now space is free to handle folds
-map <Space> za
 
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
