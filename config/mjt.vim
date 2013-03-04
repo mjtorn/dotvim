@@ -153,6 +153,7 @@ imap <C-x> <ESC>:w<CR>:echo "saved"<CR>i
 
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
+:source ~/.vim/config/mjtmaps.vim
 :source ~/.vim/config/statusline.vim
 
 " EOF
