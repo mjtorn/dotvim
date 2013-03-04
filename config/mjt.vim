@@ -148,6 +148,9 @@ endfunction
 
 nmap \S :echo FileSize()<Enter>
 
+" the "saved" text doesn't get a lot of screen time ;)
+imap <C-x> <ESC>:w<CR>:echo "saved"<CR>i
+
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
 :source ~/.vim/config/statusline.vim
