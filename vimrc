@@ -21,8 +21,6 @@ set noautochdir
 set lazyredraw
 set laststatus=2
 
-:source ~/.vim/config/mjt.vim
-
 autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
 
 " So vim-git works etc
@@ -66,4 +64,7 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType fbml set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+"" This sources everything else I want
+:source ~/.vim/config/mjt.vim
 
