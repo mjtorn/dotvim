@@ -5,9 +5,6 @@ autocmd FileType python iabbrev f <C-R>=virtcol('.') == 1 ? "from" : "f"<CR>
 autocmd FileType python iabbrev d <C-R>=(4 % (virtcol('.') - 1)) == 0 ? "def" : "d"<CR>
 autocmd FileType python iabbrev c <C-R>=(4 % (virtcol('.') - 1)) == 0 ? "class" : "c"<CR>
 
-" :D
-iabbrev <silent> CWD <C-R>=getcwd()<CR>
-
 autocmd FileType c iabbrev #d <C-R>="#define"<CR>
 autocmd FileType c iabbrev #i <C-R>="#include"<CR>
 
