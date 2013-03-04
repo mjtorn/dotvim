@@ -1,4 +1,4 @@
-" Window navigation to be a bit easier
+"" Window navigation to be a bit easier
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -9,19 +9,21 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
 nnoremap <Leader>A :Ack
 nnoremap <Leader>a :Ack
 
-" Compatibility, sort of, with command-t
+"" Compatibility, sort of, with command-t
 map <Leader>t <C-p>
 
 nmap ;C :source ~/.vim/vimrc<Enter>
 nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
 nmap ;M :source ~/.vim/config/mjt.vim<Enter>
 
+"" To get NERDTree going
 nmap <Leader>n :NERDTreeTabsToggle<CR>
 
 "" Navigate into wrapped lines as if they were real lines
 nnoremap j gj
 nnoremap k gk
 
+"" Nicer buffer scroll
 nmap <C-E> <C-E>j
 nmap <C-Y> <C-Y>k
 
