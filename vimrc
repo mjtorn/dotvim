@@ -21,8 +21,6 @@ set noautochdir
 set lazyredraw
 set laststatus=2
 
-:source ~/.vim/config/mjt.vim
-
 autocmd BufRead /tmp/mutt* :source ~/.vim/config/mail.vim
 
 " So vim-git works etc
@@ -38,30 +36,13 @@ set undolevels=1000
 " How many lines
 set undoreload=10000
 
-" Window navigation to be a bit easier
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-"" Play around with ack-grep
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"""
-nnoremap <Leader>A :Ack 
-nnoremap <Leader>a :Ack 
-
-" Compatibility, sort of, with command-t
-map <Leader>t <C-p>
-
 let g:ctrlp_custom_ignore = {
 \  'file': '\v\.(pyc)$',
 \ }
 
-" Make insertlessly do less. I like space/backspace as a stress toy
+" Make insertlessly do less. Frees the space key for folding
 let g:insertlessly_insert_spaces = 0
 let g:insertlessly_backspace_past_bol = 0
-
-" Now space is free to handle folds
-map <Space> za
 
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
@@ -84,8 +65,6 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType fbml set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
-nmap ;M :source ~/.vim/config/mjt.vim<Enter>
-
-nmap <Leader>n :NERDTreeTabsToggle<CR>
+"" This sources everything else I want
+:source ~/.vim/config/mjt.vim
 
