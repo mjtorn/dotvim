@@ -44,6 +44,9 @@ let g:ctrlp_custom_ignore = {
 let g:insertlessly_insert_spaces = 0
 let g:insertlessly_backspace_past_bol = 0
 
+" Try this with conqueterm
+let g:ConqueTerm_ReadUnfocused = 1
+
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
 set nobackup
