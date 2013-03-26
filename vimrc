@@ -52,6 +52,9 @@ let g:ConqueTerm_ReadUnfocused = 1
 set nobackup
 set noswapfile
 
+"" Try to go full hipster
+set relativenumber
+
 "" Fix some file presets
 autocmd BufEnter *.py setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8 foldmethod=syntax
 autocmd BufEnter *ml setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
