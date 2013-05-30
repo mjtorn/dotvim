@@ -84,6 +84,18 @@ nmap \S :echo FileSize()<Enter>
 " the "saved" text doesn't get a lot of screen time ;)
 imap <Leader>s <ESC>:w<CR>:echo "saved"<CR>a
 
+function! ToggleNumbers()
+  if &number == 0 && &relativenumber == 0
+    let &relativenumber = 1
+  elseif &number == 1
+    let &relativenumber = 1
+  elseif &relativenumber == 1
+    let &number = 1
+  endif
+endfunction
+
+nmap <Leader>N :call ToggleNumbers()<Enter>
+
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
 :source ~/.vim/config/mjtmaps.vim
