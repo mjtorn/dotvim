@@ -40,3 +40,7 @@ nmap ;C :source ~/.vim/vimrc<Enter>
 nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
 nmap ;M :source ~/.vim/config/mjt.vim<Enter>
 
+" Stolen from mbrochh's vim-as-a-python-ide talk
+vnoremap < <gv " better indentation
+vnoremap > >gv " better indentation
+
