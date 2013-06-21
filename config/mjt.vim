@@ -94,7 +94,7 @@ function! ToggleNumbers()
   endif
 endfunction
 
-nmap <Leader>N :call ToggleNumbers()<Enter>
+nmap <Leader>n :call ToggleNumbers()<Enter>
 
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim

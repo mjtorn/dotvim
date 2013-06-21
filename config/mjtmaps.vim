@@ -8,7 +8,7 @@ nnoremap <C-l> <C-w>l
 map <Leader>t <C-p>
 
 "" To get NERDTree going
-nmap <Leader>n :NERDTreeTabsToggle<CR>
+nmap <Leader>N :NERDTreeTabsToggle<CR>
 
 "" Navigate into wrapped lines as if they were real lines
 nnoremap j gj
