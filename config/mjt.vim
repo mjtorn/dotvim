@@ -96,6 +96,20 @@ endfunction
 
 nmap <Leader>n :call ToggleNumbers()<Enter>
 
+" https://github.com/mbrochh/vim-as-a-python-ide/blob/master/.vimrc
+
+set completeopt=longest,menuone
+function! OmniPopup(action)
+  if pumvisible()
+    if a:action == '\<C-j>'
+      return "\<C-N>"
+    elseif a:action == '\<C-k>'
+      return "\<C-P>"
+    endif
+  endif
+  return a:action
+endfunction
+
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
 :source ~/.vim/config/mjtmaps.vim
