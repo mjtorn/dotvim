@@ -15,8 +15,8 @@ nnoremap j gj
 nnoremap k gk
 
 "" Nicer buffer scroll
-nmap <C-E> <C-E>j
-nmap <C-Y> <C-Y>k
+nnoremap <C-E> <C-E>j
+nnoremap <C-Y> <C-Y>k
 
 imap <C-E> <ESC><C-E>i
 imap <C-Y> <ESC><C-Y>i
