@@ -110,6 +110,7 @@ function! OmniPopup(action)
   return a:action
 endfunction
 
+:source ~/.vim/config/colors.vim
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
 :source ~/.vim/config/mjtmaps.vim

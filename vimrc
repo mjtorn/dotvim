@@ -9,9 +9,6 @@ filetype plugin indent on
 let g:nerdtree_tabs_focus_on_files = 1
 let g:NERDTreeWinSize = 30
 
-syn on
-colors evening
-
 set expandtab
 set tabstop=2
 set ruler
