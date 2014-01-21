@@ -116,5 +116,7 @@ endfunction
 :source ~/.vim/config/mjtmaps.vim
 :source ~/.vim/config/statusline.vim
 
+:source ~/.vim/config/ycm.vim
+
 " EOF
 
