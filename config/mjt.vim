@@ -118,10 +118,10 @@ function! FakeMode()
     let mode = 'VISUAL'
   elseif mode == 'V'
     let mode = 'VISUAL LINE'
-  elseif mode == '^v'
-    let mode = 'VISUAL BLOCK'
   elseif mode == 'i'
     let mode = 'INSERT'
+  else
+    let mode = 'VISUAL BLOCK'
   endif
   return "-- " . mode . " --""
 endfunction
