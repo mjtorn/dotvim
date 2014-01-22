@@ -49,7 +49,7 @@ vmap  <expr>  H   DVB_Drag('left')
 vmap  <expr>  L   DVB_Drag('right')
 vmap  <expr>  J   DVB_Drag('down')
 vmap  <expr>  K   DVB_Drag('up')
-vmap  <expr>  D   DVB_Duplicate()
+vmap  <expr>  P   DVB_Duplicate()
 
 " Damian Conway's vmath
 vmap  <expr>  ++  VMATH_YankAndAnalyse()
