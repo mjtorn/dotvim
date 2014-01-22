@@ -110,6 +110,22 @@ function! OmniPopup(action)
   return a:action
 endfunction
 
+function! FakeMode()
+  let mode = mode()
+  if mode == 'n'
+    let mode = 'NORMAL'
+  elseif mode == 'v'
+    let mode = 'VISUAL'
+  elseif mode == 'V'
+    let mode = 'VISUAL LINE'
+  elseif mode == '^v'
+    let mode = 'VISUAL BLOCK'
+  elseif mode == 'i'
+    let mode = 'INSERT'
+  endif
+  return "-- " . mode . " --""
+endfunction
+
 :source ~/.vim/config/colors.vim
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
