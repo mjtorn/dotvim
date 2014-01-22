@@ -17,7 +17,7 @@ function! CreateTabLine()
       let s .= '%#TabLine#'
     endif
 
-    " Tab page number from help
+    " Tab page number
     let s .= '[' . i . ']'
 
     " The buffer (~= file) name
