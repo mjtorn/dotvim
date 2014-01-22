@@ -44,3 +44,7 @@ nmap ;M :source ~/.vim/config/mjt.vim<Enter>
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
 
+" Damian Conway's vmath
+vmap  <expr>  ++  VMATH_YankAndAnalyse()
+nmap          ++  vip++
+
