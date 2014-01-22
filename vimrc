@@ -11,6 +11,9 @@ let g:NERDTreeWinSize = 30
 
 set modeline
 
+" Prefer this in the statusbar, for vmath and echoes to work
+set noshowmode
+
 set expandtab
 set tabstop=2
 set ruler
