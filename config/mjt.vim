@@ -131,6 +131,7 @@ endfunction
 :source ~/.vim/config/mjtabbrev.vim
 :source ~/.vim/config/mjtmaps.vim
 :source ~/.vim/config/statusline.vim
+:source ~/.vim/config/tabline.vim
 
 :source ~/.vim/config/ycm.vim
 
