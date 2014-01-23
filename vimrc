@@ -49,6 +49,10 @@ let g:insertlessly_backspace_past_bol = 0
 " Try this with conqueterm
 let g:ConqueTerm_ReadUnfocused = 1
 
+" Could SnipMate work after all?
+let g:snips_trigger_key = '<c-f>'
+let g:snips_trigger_key_backwards = '<s-c-f>'
+
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
 set nobackup
