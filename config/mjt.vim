@@ -133,7 +133,5 @@ endfunction
 :source ~/.vim/config/statusline.vim
 :source ~/.vim/config/tabline.vim
 
-:source ~/.vim/config/ycm.vim
-
 " EOF
 
