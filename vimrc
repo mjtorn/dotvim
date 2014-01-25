@@ -61,6 +61,10 @@ set noswapfile
 "" Try to go full hipster
 set relativenumber
 
+"" Highlight overfows at 80 and 100
+call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%101v', 100)
+
 "" Fix some file presets
 autocmd BufEnter *.py setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8 foldmethod=syntax
 autocmd BufEnter *ml setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8
