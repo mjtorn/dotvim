@@ -101,14 +101,17 @@ nmap <Leader>n :call ToggleNumbers()<Enter>
 set completeopt=longest,menuone
 function! OmniPopup(action)
   if pumvisible()
-    if a:action == '\<C-j>'
+    if a:action == 'j'
       return "\<C-N>"
-    elseif a:action == '\<C-k>'
+    elseif a:action == 'k'
       return "\<C-P>"
     endif
   endif
   return a:action
 endfunction
+
+inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 function! FakeMode()
   let mode = mode()
