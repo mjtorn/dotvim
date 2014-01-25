@@ -53,6 +53,10 @@ let g:ConqueTerm_ReadUnfocused = 1
 let g:snips_trigger_key = '<c-f>'
 let g:snips_trigger_key_backwards = '<s-c-f>'
 
+" some ycm confs
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf = 0
+
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
 set nobackup
