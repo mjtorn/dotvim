@@ -85,6 +85,10 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType fbml set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
+" Though this doesn't indent inside the parentheses, I like it
+let g:pyindent_open_paren = '&-sw'
+let g:pyindent_nested_paren = '&-sw'
+
 "" This sources everything else I want
 :source ~/.vim/config/mjt.vim
 
