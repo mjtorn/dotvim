@@ -4,6 +4,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+"" Double <Leader> is a good way to prevent fiddling with timeoutlen!
+inoremap <Leader><Leader> <Leader>
+
 "" Compatibility, sort of, with command-t
 map <Leader>t <C-p>
 
