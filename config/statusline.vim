@@ -6,8 +6,8 @@
 :set statusline+=%y[%{strlen(&fenc)?&fenc:'none'},%{&ff}]\  " encoding and dos/unix
 :set statusline+=%b\ (0x%B)\                                " current character, and hex
 :set statusline+=[%{foldlevel('.')}]                        " wolf in the fold
-:set statusline+=\ %{FakeMode()}\                           " mode
-:set statusline+=%=                                         " l/r separator
+:set statusline+=\ %#Visual#\ %{FakeMode()}\                " mode
+:set statusline+=%##%=                                      " l/r separator
 :set statusline+=%c,%l/%L\                                  " location in file
 :set statusline+=%P\                                        " percent through file
 :set statusline+=(%{FileSize()})\                           " file size
