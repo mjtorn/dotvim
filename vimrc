@@ -55,9 +55,22 @@ let g:ConqueTerm_ReadUnfocused = 1
 let g:snips_trigger_key = '<c-f>'
 let g:snips_trigger_key_backwards = '<s-c-f>'
 
-" some ycm confs
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
-let g:ycm_confirm_extra_conf = 0
+"" some neocomplete confs, taken from https://github.com/Shougo/neocomplete.vim
+let g:neocomplete#enable_at_startup = 1
+
+" Plugin key-mappings.
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
