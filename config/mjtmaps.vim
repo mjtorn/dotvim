@@ -58,3 +58,6 @@ vmap  <expr>  P   DVB_Duplicate()
 vmap  <expr>  ++  VMATH_YankAndAnalyse()
 nmap          ++  vip++
 
+"" Fix whitespaces manually
+nnoremap <Leader>fw :%s/\s\+\%#\@<!$//g<CR>
+
