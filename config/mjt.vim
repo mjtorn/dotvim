@@ -130,6 +130,7 @@ function! FakeMode()
 endfunction
 
 :source ~/.vim/config/colors.vim
+:source ~/.vim/config/mjthl.vim
 :source ~/.vim/config/mjttab.vim
 :source ~/.vim/config/mjtabbrev.vim
 :source ~/.vim/config/mjtmaps.vim
