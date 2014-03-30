@@ -61,3 +61,6 @@
 [submodule "bundle/visualstarsearch"]
 	path = bundle/visualstarsearch
 	url = git://github.com/nelstrom/vim-visual-star-search.git
+[submodule "bundle/neocomplete"]
+	path = bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
