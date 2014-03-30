@@ -98,7 +98,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Syntastic
-let g:syntastic_python_checkers = ['pylint', 'python']
+let g:syntastic_python_checkers = ['flake8', 'python']
 let g:syntastic_check_on_open = 1
 
 " Though this doesn't indent inside the parentheses, I like it
