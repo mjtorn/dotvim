@@ -61,6 +61,9 @@
 [submodule "bundle/visualstarsearch"]
 	path = bundle/visualstarsearch
 	url = git://github.com/nelstrom/vim-visual-star-search.git
-[submodule "bundle/YouCompleteMe"]
-	path = bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "bundle/neocomplete"]
+	path = bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
