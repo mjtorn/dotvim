@@ -89,12 +89,15 @@ autocmd BufEnter *.coffee setl tabstop=2 expandtab autoindent shiftwidth=2 filee
 "" And not have folds closed by default!
 set foldlevelstart=10
 
-" http://blog.fluther.com/django-vim/
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"" From neocomplete and http://blog.fluther.com/django-vim/
+" XXX: Is markdown really html enough to use the same completions
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType fbml set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 
 " Though this doesn't indent inside the parentheses, I like it
 let g:pyindent_open_paren = '&-sw'
