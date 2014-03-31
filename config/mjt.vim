@@ -131,7 +131,6 @@ endfunction
 
 function! LoadLocalSyntastic()
   let s:path = getcwd() . '/.syntastic_conf.vim'
-  echo s:path
   if !exists('g:local_syntastic_conf_found')
     if findfile(s:path) == s:path
       exec 'source ' . s:path
