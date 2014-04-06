@@ -16,3 +16,8 @@ Installation
 
     mkdir undo
 
+Bonuses
+-------
+
+Some flake8 conf for use with syntastic: https://gist.github.com/mjtorn/9870434
+

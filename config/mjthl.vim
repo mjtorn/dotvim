@@ -7,6 +7,6 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 "" Highlight overfows at 80 and 100
-call matchadd('ColorColumn', '\%81v', 100)
-call matchadd('ColorColumn', '\%101v', 100)
+autocmd BufWinEnter * call matchadd('ColorColumn', '\%81v', 100)
+autocmd BufWinEnter * call matchadd('ColorColumn', '\%101v', 100)
 
