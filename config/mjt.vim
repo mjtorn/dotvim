@@ -1,4 +1,4 @@
-" vim: tabstop=4 shiftwidth=4
+" vim: tabstop=2 shiftwidth=2
 
 """
 """ http://www.tutorialhero.com/click-59484-scripting_the_vim_editor_with_vmscript.php
