@@ -37,7 +37,7 @@ hi StorageClass guifg=#FFFFB6 guibg=NONE guisp=NONE gui=NONE ctermfg=229 ctermbg
 hi Todo guifg=#8f8f8f guibg=NONE guisp=NONE gui=NONE ctermfg=245 ctermbg=NONE cterm=NONE
 hi Special guifg=#E18964 guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
 hi LineNr guifg=#3D3D3D guibg=#000000 guisp=#000000 gui=NONE ctermfg=245 ctermbg=NONE cterm=NONE
-hi StatusLine guifg=#CCCCCC guibg=#202020 guisp=#202020 gui=italic ctermfg=252 ctermbg=234 cterm=NONE
+hi StatusLine guifg=#ffffff guibg=#000000 guisp=#202020 gui=italic ctermfg=15 ctermbg=0 cterm=NONE
 hi Normal guifg=#f6f3e8 guibg=#000000 guisp=#000000 gui=NONE ctermfg=230 ctermbg=NONE cterm=NONE
 hi Label guifg=#6699CC guibg=NONE guisp=NONE gui=NONE ctermfg=68 ctermbg=NONE cterm=NONE
 "hi CTagsImport -- no settings --
