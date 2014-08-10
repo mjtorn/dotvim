@@ -114,7 +114,11 @@ inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 function! FakeMode()
-  let paste = g:pasting ? '[P] ' : ''
+  if exists("g:pasting") && g:pasting == 1
+    let paste = '[P] '
+  else
+    let paste = ''
+  endif
   let mode = mode()
   if mode == 'n'
     let mode = 'NORMAL'
