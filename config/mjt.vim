@@ -114,6 +114,7 @@ inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 function! FakeMode()
+  let paste = g:pasting ? '[P] ' : ''
   let mode = mode()
   if mode == 'n'
     let mode = 'NORMAL'
@@ -126,7 +127,7 @@ function! FakeMode()
   else
     let mode = 'VISUAL BLOCK'
   endif
-  return "-- " . mode . " --""
+  return "-- " . paste . mode . " --""
 endfunction
 
 function! LoadLocalSyntastic()
