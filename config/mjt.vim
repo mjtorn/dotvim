@@ -128,8 +128,12 @@ function! FakeMode()
     let mode = 'VISUAL LINE'
   elseif mode == 'i'
     let mode = 'INSERT'
-  else
+  elseif mode == 'R'
+    let mode = 'REPLACE'
+  elseif mode == '^V'
     let mode = 'VISUAL BLOCK'
+  else
+    let mode = '?? ' . mode
   endif
   return "-- " . paste . mode . " --""
 endfunction
