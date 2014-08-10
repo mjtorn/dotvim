@@ -14,6 +14,9 @@ nmap <Leader>N :NERDTreeTabsToggle<CR>
 nnoremap j gj
 nnoremap k gk
 
+"" Also prefer Y to be congruent with C and D
+nnoremap Y y$
+
 "" Nicer buffer scroll
 nnoremap <C-E> <C-E>j
 nnoremap <C-Y> <C-Y>k
