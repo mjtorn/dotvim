@@ -51,10 +51,6 @@ let g:insertlessly_cleanup_all_ws = 0
 " Try this with conqueterm
 let g:ConqueTerm_ReadUnfocused = 1
 
-" Could SnipMate work after all?
-let g:snips_trigger_key = '<c-f>'
-let g:snips_trigger_key_backwards = '<s-c-f>'
-
 "" some neocomplete confs, taken from https://github.com/Shougo/neocomplete.vim
 let g:neocomplete#enable_at_startup = 1
 
