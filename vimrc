@@ -96,6 +96,10 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Syntastic
 let g:syntastic_python_checkers = ['flake8', 'python']
 
+" Emmet might be a bit trigger happy
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
 " Though this doesn't indent inside the parentheses, I like it
 let g:pyindent_open_paren = '&-sw'
 let g:pyindent_nested_paren = '&-sw'
