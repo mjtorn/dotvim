@@ -45,8 +45,8 @@ let g:ctrlp_custom_ignore = {
 " Make insertlessly do less. Frees the space key for folding
 let g:insertlessly_insert_spaces = 0
 let g:insertlessly_backspace_past_bol = 0
-let g:insertlessly_cleanup_trailing_ws = 1
-let g:insertlessly_cleanup_all_ws = 1
+let g:insertlessly_cleanup_trailing_ws = 0
+let g:insertlessly_cleanup_all_ws = 0
 
 " Try this with conqueterm
 let g:ConqueTerm_ReadUnfocused = 1
