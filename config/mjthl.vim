@@ -10,3 +10,6 @@ autocmd BufWinLeave * call clearmatches()
 autocmd BufWinEnter * call matchadd('ColorColumn', '\%81v', 100)
 autocmd BufWinEnter * call matchadd('ColorColumn', '\%101v', 100)
 
+"" Tabs highlighted as well plz
+set lcs=eol:$,tab:⇥\ ,trail:-,nbsp:␣
+

@@ -2,5 +2,8 @@
 
 syn on
 
+" for list characters, mjthl.vim
+set list
+
 colors ir_black
 
