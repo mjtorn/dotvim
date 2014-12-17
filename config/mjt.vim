@@ -149,6 +149,12 @@ function! LoadLocalSyntastic()
 endfunction
 au BufEnter * call LoadLocalSyntastic()
 
+function! StripWhiteSpaces()
+  :silent! %s/^\s\+$//g
+  :silent! %s/^\(\s*[^\s]\+\)\s\+$/\1/g
+endfunction
+au BufEnter * call StripWhiteSpaces()
+
 :source ~/.vim/config/colors.vim
 :source ~/.vim/config/mjthl.vim
 :source ~/.vim/config/mjttab.vim
