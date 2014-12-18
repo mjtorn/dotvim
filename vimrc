@@ -74,6 +74,7 @@ set noswapfile
 
 "" Try to go full hipster
 set relativenumber
+let &number = 1
 
 "" Fix some file presets
 autocmd BufEnter *.py setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8 foldmethod=syntax
