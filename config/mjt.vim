@@ -172,12 +172,11 @@ endfunction
 function! C_DisableNeocomplete()
   if &ft ==# 'cpp'
     call neocomplete#init#disable()
-    imap <Tab> <C-r>=MaybeSpeshulTab()<CR>
+    imap <buffer> <Tab> <C-r>=MaybeSpeshulTab()<CR>
   elseif &ft ==# 'c'
     call neocomplete#init#disable()
-    imap <Tab> <C-r>=MaybeSpeshulTab()<CR>
+    imap <buffer> <Tab> <C-r>=MaybeSpeshulTab()<CR>
   else
-    silent! iunmap <Tab>
     call neocomplete#init#enable()
   endif
 endfunction
