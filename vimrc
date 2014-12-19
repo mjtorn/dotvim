@@ -72,6 +72,9 @@ let g:jedi#completions_enabled=0
 " This is not the droid you are looking for :(
 "let g:jedi#popup_select_first = 0
 
+"" clang?
+let g:clang_library_path="/usr/lib/llvm-3.5/lib/"
+
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
 set nobackup
