@@ -155,6 +155,17 @@ function! StripWhiteSpaces()
 endfunction
 au BufEnter * call StripWhiteSpaces()
 
+function! s:c_disable_autocomplete()
+  if &ft ==# 'cpp'
+    :call neocomplete#init#disable()
+  elseif &ft ==# 'c'
+    :call neocomplete#init#disable()
+  else
+    :call neocomplete#init#enable()
+  endif
+endfunction
+autocmd BufEnter * call s:c_disable_autocomplete()
+
 :source ~/.vim/config/colors.vim
 :source ~/.vim/config/mjthl.vim
 :source ~/.vim/config/mjttab.vim
