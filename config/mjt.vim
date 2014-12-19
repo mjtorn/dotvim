@@ -155,27 +155,31 @@ function! StripWhiteSpaces()
 endfunction
 au BufEnter * call StripWhiteSpaces()
 
-function! MaybeSpeshulTab()
-  let lineContent = getline('.')
-  let slice = strpart(lineContent, 0, col('.'))
+function! MaybeSpeshulTab(...)
+  let col = col('.') - 1
 
-  if "^\s\+$" =~ slice
+  if col == 0 || getline('.')[col - 1] !~ '\k'
+    let s:speshulMenuOpen = 0
     return "\<Tab>"
-  else
-    if (col('.') - 1) % &tabstop == 0
-      return "\<Tab>"
+  elseif a:0 > 0
+    if s:speshulMenuOpen == 0
+      let s:speshulMenuOpen = 1
+      return "\<C-x>\<C-u>"
     endif
-    return "\<C-x>\<C-u>"
+
+    if a:1 == "forward"
+      return "\<C-n>"
+    else
+      return "\<C-p>"
+    endif
   endif
 endfunction
 
 function! C_DisableNeocomplete()
-  if &ft ==# 'cpp'
+  if &ft ==# 'cpp' || &ft ==# 'c'
     call neocomplete#init#disable()
-    imap <buffer> <Tab> <C-r>=MaybeSpeshulTab()<CR>
-  elseif &ft ==# 'c'
-    call neocomplete#init#disable()
-    imap <buffer> <Tab> <C-r>=MaybeSpeshulTab()<CR>
+    imap <buffer> <Tab> <C-r>=MaybeSpeshulTab('forward')<CR>
+    imap <buffer> <S-Tab> <C-r>=MaybeSpeshulTab('backward')<CR>
   else
     call neocomplete#init#enable()
   endif
