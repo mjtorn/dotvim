@@ -155,16 +155,33 @@ function! StripWhiteSpaces()
 endfunction
 au BufEnter * call StripWhiteSpaces()
 
-function! s:c_disable_autocomplete()
-  if &ft ==# 'cpp'
-    :call neocomplete#init#disable()
-  elseif &ft ==# 'c'
-    :call neocomplete#init#disable()
+function! MaybeSpeshulTab()
+  let lineContent = getline('.')
+  let slice = strpart(lineContent, 0, col('.'))
+
+  if "^\s\+$" =~ slice
+    return "\<Tab>"
   else
-    :call neocomplete#init#enable()
+    if (col('.') - 1) % &tabstop == 0
+      return "\<Tab>"
+    endif
+    return "\<C-x>\<C-u>"
   endif
 endfunction
-autocmd BufEnter * call s:c_disable_autocomplete()
+
+function! C_DisableNeocomplete()
+  if &ft ==# 'cpp'
+    call neocomplete#init#disable()
+    imap <Tab> <C-r>=MaybeSpeshulTab()<CR>
+  elseif &ft ==# 'c'
+    call neocomplete#init#disable()
+    imap <Tab> <C-r>=MaybeSpeshulTab()<CR>
+  else
+    silent! iunmap <Tab>
+    call neocomplete#init#enable()
+  endif
+endfunction
+autocmd BufEnter * call C_DisableNeocomplete()
 
 :source ~/.vim/config/colors.vim
 :source ~/.vim/config/mjthl.vim
