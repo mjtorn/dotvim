@@ -67,6 +67,11 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+"" What's wrong with jedi.vim? Need to disable it to make it work?
+let g:jedi#completions_enabled=0
+" This is not the droid you are looking for :(
+"let g:jedi#popup_select_first = 0
+
 "" Because I used to have a recovery function that did not work and I learned
 "" to save my files instead
 set nobackup
