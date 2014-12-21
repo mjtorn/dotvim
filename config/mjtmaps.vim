@@ -34,10 +34,8 @@ map <Space> za
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 nnoremap <Leader>a :Ack
 
-"" Can we do this with commentary?
-if maparg('gC','n') ==# ''
-  nmap gC  yypk<Plug>Commentary
-endif
+"" Copy line and edit
+nmap <Leader>c yyPVgcj
 
 nmap ;C :source ~/.vim/vimrc<Enter>
 nmap ;S :source ~/.vim/plugin/scratchpad.vim<Enter>
