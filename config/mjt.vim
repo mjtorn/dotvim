@@ -158,16 +158,12 @@ au BufEnter * call StripWhiteSpaces()
 function! MaybeSpeshulTab(...)
   let col = col('.') - 1
 
-  if !exists("s:speshulMenuOpen")
-    let s:speshulMenuOpen = 0
-  endif
-
   if col == 0 || getline('.')[col - 1] !~ '\k'
-    let s:speshulMenuOpen = 0
-    return "\<Tab>"
+    if !pumvisible()
+      return "\<Tab>"
+    endif
   elseif a:0 > 0
-    if s:speshulMenuOpen == 0
-      let s:speshulMenuOpen = 1
+    if !pumvisible()
       return "\<C-x>\<C-u>"
     endif
 
