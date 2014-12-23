@@ -143,7 +143,7 @@ function! LoadLocalSyntastic()
   if !exists('g:local_syntastic_conf_found')
     if findfile(s:path) == s:path
       exec 'source ' . s:path
-      echo 'Loaded local syntastic conf ' . s:path
+      " echo 'Loaded local syntastic conf ' . s:path
     endif
   endif
 endfunction
