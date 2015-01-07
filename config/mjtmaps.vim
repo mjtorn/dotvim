@@ -10,9 +10,10 @@ inoremap <Leader><Leader> <Leader>
 "" To get NERDTree going
 nmap <Leader>N :NERDTreeTabsToggle<CR>
 
-"" Navigate into wrapped lines as if they were real lines
-nnoremap j gj
-nnoremap k gk
+"" Navigate into wrapped lines as if they were real lines, but skip over them
+"" like expected
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 "" Also prefer Y to be congruent with C and D
 nnoremap Y y$
