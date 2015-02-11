@@ -93,6 +93,7 @@ autocmd BufEnter *vim setl tabstop=2 expandtab autoindent shiftwidth=2 fileencod
 autocmd BufEnter *.coffee setl tabstop=2 expandtab autoindent shiftwidth=2 fileencoding=utf-8 foldmethod=indent
 autocmd BufEnter *.c setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8 foldmethod=syntax
 autocmd BufEnter *.cpp setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8 foldmethod=syntax
+autocmd BufEnter *.java setl tabstop=4 expandtab autoindent shiftwidth=4 fileencoding=utf-8 foldmethod=syntax
 
 "" And not have folds closed by default!
 set foldlevelstart=10
